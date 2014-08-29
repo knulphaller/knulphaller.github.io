@@ -5,23 +5,23 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>knulphaller.github.io/archive.html</loc>
+  <loc>http://knulphaller.github.io/archive.html</loc>
   <lastmod>2014-08-29</lastmod>
  </url>
  <url>
-  <loc>knulphaller.github.io/categories/index.html</loc>
+  <loc>http://knulphaller.github.io/categories/index.html</loc>
   <lastmod>2014-08-29</lastmod>
  </url>
  <url>
-  <loc>knulphaller.github.io/galleries/index.html</loc>
+  <loc>http://knulphaller.github.io/galleries/index.html</loc>
   <lastmod>2014-08-29</lastmod>
  </url>
  <url>
-  <loc>knulphaller.github.io/index.html</loc>
+  <loc>http://knulphaller.github.io/index.html</loc>
   <lastmod>2014-08-29</lastmod>
  </url>
  <url>
-  <loc>knulphaller.github.io/listings/index.html</loc>
+  <loc>http://knulphaller.github.io/listings/index.html</loc>
   <lastmod>2014-08-29</lastmod>
  </url>
 </urlset>

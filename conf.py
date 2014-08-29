@@ -17,16 +17,16 @@ import time
 
 
 # Data about this site
-BLOG_AUTHOR = "Knulp"  # (translatable)
-BLOG_TITLE = "Knulp's Blog"  # (translatable)
+BLOG_AUTHOR = "Nikola Tesla"  # (translatable)
+BLOG_TITLE = "My Nikola Site"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link
 SITE_URL = "http://knulphaller.github.io/"
 # This is the URL where nikola's output will be deployed.
 # If not set, defaults to SITE_URL
-# BASE_URL = "knulphaller.github.io"
-BLOG_EMAIL = "hpr1@mail.ru"
-BLOG_DESCRIPTION = "This is MY Blog!! :)"  # (translatable)
+# BASE_URL = "http://knulphaller.github.io/"
+BLOG_EMAIL = "n.tesla@example.com"
+BLOG_DESCRIPTION = "This is a demo site for Nikola."  # (translatable)
 
 # Nikola is multilingual!
 #
@@ -467,7 +467,7 @@ COMMENT_SYSTEM = "DISQUS"
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = "knulps-blog"
+COMMENT_SYSTEM_ID = "nikolademo"
 
 # Enable annotations using annotateit.org?
 # If set to False, you can still enable them for individual posts and pages

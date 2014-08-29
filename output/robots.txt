@@ -1,2 +1,2 @@
-Sitemap: sitemapindex.xml
+Sitemap: http://knulphaller.github.io/sitemapindex.xml
 
