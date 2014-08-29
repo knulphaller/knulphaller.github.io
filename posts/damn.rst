@@ -6,4 +6,13 @@
 .. description: 
 .. type: text
 
+
 Damn nikola and damn python
+testing python
+
+.. python:
+	import os
+
+
+
+gorek ne olur

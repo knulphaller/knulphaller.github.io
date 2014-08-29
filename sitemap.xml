@@ -5,23 +5,51 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
+  <loc>http://knulphaller.github.io/2014/index.html</loc>
+  <lastmod>2014-08-30</lastmod>
+ </url>
+ <url>
   <loc>http://knulphaller.github.io/archive.html</loc>
-  <lastmod>2014-08-29</lastmod>
+  <lastmod>2014-08-30</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/categories/index.html</loc>
-  <lastmod>2014-08-29</lastmod>
+  <lastmod>2014-08-30</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/galleries/index.html</loc>
-  <lastmod>2014-08-29</lastmod>
+  <lastmod>2014-08-30</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/index.html</loc>
-  <lastmod>2014-08-29</lastmod>
+  <lastmod>2014-08-30</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/listings/firstpro.py.html</loc>
+  <lastmod>2014-08-30</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/listings/index.html</loc>
+  <lastmod>2014-08-30</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/posts/damn.html</loc>
   <lastmod>2014-08-29</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/posts/testing-coding-with-markdown.html</loc>
+  <lastmod>2014-08-30</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/posts/testing-coding-with-markdown/index.html</loc>
+  <lastmod>2014-08-30</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/stories/cv.html</loc>
+  <lastmod>2014-08-29</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/tipue_search.html</loc>
+  <lastmod>2014-08-30</lastmod>
  </url>
 </urlset>
