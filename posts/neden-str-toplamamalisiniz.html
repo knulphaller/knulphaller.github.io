@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Döngü içerisinde str objelerini toplamak çok uzun sürüyor. En hızlı şekilde string birleştirmek için map ve join kullanın.">
+    <meta name="viewport" content="width=device-width">
+    <title>Neden str toplamamalısınız | Just another simple blog</title>
+
+    
+            <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://knulphaller.github.io/posts/neden-str-toplamamalisiniz.html">
+
+
+
+    
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Knulp">
+    
+        <meta name="og:title" content="Neden str toplamamalısınız">
+        <meta name="og:url" content="http://knulphaller.github.io/posts/neden-str-toplamamalisiniz.html">
+            <meta name="og:description" content="Döngü içerisinde str objelerini toplamak çok uzun sürüyor. En hızlı şekilde string birleştirmek için map ve join kullanın.">
+        <meta name="og:site_name" content="Just another simple blog">
+        <meta name="og:type" content="article">
+
+    
+
+    
+
+
+
+</head>
+<body>
+    <section class="social">
+        <ul>
+        
+            <li><a href="../index.html" title="Ana Səhifə"><i class="icon-home"></i></a></li>
+            <li><a href="../archive.html" title="Arxiv"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../categories/index.html" title="Kateqoriyalar"><i class="icon-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="../stories/about.html" title="Mən Kiməm"><i class="icon-user"></i></a></li>
+            <li><a href="https://github.com/knulphaller" title="Github və Mən"><i class="icon-github"></i></a></li>
+
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
+            
+    <div class="post">
+    
+    <h1 class="p-name entry-title" itemprop="headline name">Neden str toplamamalısınız</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2013-10-27T15:27:00+04:00">2013-10-27 15:27</time>
+            
+
+            
+
+            </div>
+            
+
+        </div>
+        <div class="body">
+            <p>Günlerden pazar, bir yandan çay içip bir yandan Python kurcalarken, aklıma döngü optimizasyon
+yöntemlerini denemek geldi. Daha önce bir yerde gördüğümü hatırladığım için, bir liste içindeki
+int'leri karaktere dönüştürüp, bir str içinde birleştirmeyi deniyorum. Bu yöntem bu kadar hızlı,
+şu yöntem bu kadar yavaş derken, acaba str objelerini + ile toplamak
+ne kadar kötü olabilir ki diye merak ettim. 1 milyon karakter ile şunu denedim: <!-- TEASER_END --></p>
+<pre class="code literal-block"><span class="n">string</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bytelist</span><span class="p">:</span>
+    <span class="n">string</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre>
+
+
+<p>Bekledim, bekledim, bekledim... Bir türlü bitmek bilmedi. Ben de daha küçük liste üzerinde
+deneyeyim dedim. Önce 10 bin, sonra 20 bin derken bir döngü içerisinde 420 bin uzunluklu
+listeye kadar denedim. Sonuçlar şöyle oldu:</p>
+<p><img alt="scatter plot time versus number of chars" src="../images/scatter.png"></p>
+<p>Grafikten de görüleceği üzere, çalışma süresinin artışı biraz exponansiyel gibi görünüyor.
+İlk bakışta şaşırdım, lineer bir artış bekliyordum. Sonra kafama dank etti! Döngünün
+her etabında, bir önceki str'nin başka bir yere kopyalanması ve yeni karakterin eklenmesi
+gerekiyor. Döngü büyüdükçe, kopyalanması gereken string sayısı ile birlikte
+kopyalanan stringlerin uzunluğu da artıyor. Dolayısıyla, <code>n * (n - 1) / 2</code> karakter taşıma
+işlemi yapılıyor. Yani gerçekten döngünün büyüklüğü ve harcanan zaman arasında <del>exponansiyonel</del> <ins>kuadratik</ins>
+bir ilişki var. Kabataslak bir hesap yaptım, eğer işlemin bitmesini bekleseydim, 13-14 saat
+beklemem gerekecekmiş. Aynı hesapla, eğer 10 milyon karakterle işlem yapsam, 57 gün beklemem
+gerekecekti. İşte bu yüzden, özellikle döngü içerisinde str toplamak çok hoş sonuçlar doğurmuyor.</p>
+<p>Bunlar da 10 milyon karakterle denediğim diğer algoritmalar:</p>
+<pre class="code literal-block"><span class="c"># for loop 1</span>
+<span class="n">chars</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bytelist</span><span class="p">:</span>
+    <span class="n">chars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="n">string</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">looper</span><span class="p">():</span>
+    <span class="n">chars</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">_chr</span> <span class="o">=</span> <span class="nb">chr</span>
+    <span class="n">_append</span> <span class="o">=</span> <span class="n">chars</span><span class="o">.</span><span class="n">append</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bytelist</span><span class="p">:</span>
+        <span class="n">_append</span><span class="p">(</span><span class="n">_chr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+
+<span class="c"># for loop 2</span>
+<span class="n">looper</span><span class="p">()</span>
+
+<span class="c"># map</span>
+<span class="n">string</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">chr</span><span class="p">,</span> <span class="n">bytelist</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">looper2</span><span class="p">():</span>
+    <span class="n">_chr</span> <span class="o">=</span> <span class="nb">chr</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">chr</span><span class="p">,</span> <span class="n">bytelist</span><span class="p">))</span>
+
+<span class="c"># local map</span>
+<span class="n">looper2</span><span class="p">()</span>
+</pre>
+
+
+<p>Sonuçlar:</p>
+<pre>
+for loop 1 took 4.05400013924 seconds
+for loop 2 took 2.70499992371 seconds
+map took 2.22099995613 seconds
+map local took 2.24699997902 seconds
+</pre>
+
+<p>Evet, şampiyonumuz:</p>
+<pre class="code literal-block"><span class="n">string</span> <span class="o">=</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">chr</span><span class="p">,</span> <span class="n">bytelist</span><span class="p">))</span>
+</pre>
+
+
+<p><a href="https://gist.github.com/yasar11732/7181985">Bu ölçümleri yapmak için kullandığım dosyaya</a> gist üzerinden erişebilirsiniz.</p>
+        </div>
+        
+
+            
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="knulphaller",
+            disqus_url="http://knulphaller.github.io/posts/neden-str-toplamamalisiniz.html",
+        disqus_title="Neden str toplamamal\u0131s\u0131n\u0131z",
+        disqus_identifier="cache/posts/neden-str-toplamamalisiniz.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        
+
+    </div>
+
+        
+       <script>var disqus_shortname="knulphaller";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+             
+        <footer id="footer" role="contentinfo">
+            <p>Contents © 2014         <a href="mailto:http://scr.im/writehim">Knulp</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+
+        </div>
+    </section>
+    
+    
+    
+            <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    
+        <script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+    
+</body>
+</html>
