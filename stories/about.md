@@ -8,12 +8,9 @@
 .. type: text
 -->
 
-###Mən sadəcə kodlarnan dünyanı dəyişməyə çalışan biriyəm...
+###Just another python beginner...
 
 
-
-
-Just
 
 	>>> import this
 	The Zen of Python, by Tim Peters
