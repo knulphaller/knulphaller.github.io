@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Python, cmd və Hotspot. Pythonla Wifi Hotspot yaradaq. | Just another simple blog</title>
+
+    
+            <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://knulphaller.github.io/posts/Pythondan%20istifad%C9%99%20ed%C9%99r%C9%99k%20Command%20Line%20%C9%99mrl%C9%99ri%20vasit%C9%99sil%C9%99%20Hotspot%20nec%C9%99%20yaratmaq%20olar..html">
+
+
+
+    
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
+
+    
+
+
+    
+
+    <meta name="author" content="Knulp">
+    
+        <meta name="og:title" content="Python, cmd və Hotspot. Pythonla Wifi Hotspot yaradaq.">
+        <meta name="og:url" content="http://knulphaller.github.io/posts/Pythondan istifadə edərək Command Line əmrləri vasitəsilə Hotspot necə yaratmaq olar..html">
+            <meta name="og:description" content="Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. ">
+        <meta name="og:site_name" content="Just another simple blog">
+        <meta name="og:type" content="article">
+
+    
+
+    
+
+
+
+</head>
+<body>
+    <section class="social">
+        <ul>
+        
+            <li><a href="../index.html" title="Ana Səhifə"><i class="icon-home"></i></a></li>
+            <li><a href="../archive.html" title="Arxiv"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../categories/index.html" title="Kateqoriyalar"><i class="icon-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="../stories/about.html" title="Mən Kiməm"><i class="icon-user"></i></a></li>
+            <li><a href="https://github.com/knulphaller" title="Github və Mən"><i class="icon-github"></i></a></li>
+
+        </ul>
+    </section>
+    <section class="page-content">
+        <div class="content" rel="main">
+            
+    <div class="post">
+    
+    <h1 class="p-name entry-title" itemprop="headline name">Python, cmd və Hotspot. Pythonla Wifi Hotspot yaradaq.</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2014-09-06T01:36:29+05:00">2014-09-06 01:36</time>
+            
+
+            
+
+            </div>
+            
+        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
+        </ul>
+        </div>
+
+        </div>
+        <div class="body">
+            <p>Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. Amma mobil modemlərdən istifadə edənlər(elə biri də mən) gec tez belə bir metoda baş vururlar. Gəlin bir də bunu pythonla edək.</p>
+<!-- TEASER_END: Davamını oxu -->
+
+<p>Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. Amma mobil modemlərdən istifadə edənlər(elə biri də mən) gec tez belə bir metoda baş vururlar. Mən də adətən bu metodlardan istifadə edirəm. Belə şəbəkəni paylamaq üçün bir çox programlar mövcuddur. Bu programlara misal olaraq Wifi Hotspot, Connectify, Maryfi kimi programları göstərə bilərik. Elə yaxın zamana qədər mən də bu programlardan istifadə edirdim. Lakin dəyişməyən şey bu programlarda çıxan problemlər olurdu. Adətən məndə bu programlar tez-tez donur, çox yaddaş yeyir ip confiqurasiyalara barmaq edir və s bir çox belə kiçik məsələlər ilə başımı ağrıdırdılar. Bir dostumun da mənə bu məsələdə şikayət etməsi məni vadar elədi ki bu məsələyə bir az ciddi yanaşım. Deməli belə, bu məsələdə demək olar ki mən bütün yollara baş vurdum. Ən effektiv həll yolu isə şəbəkəni elə Command Line-dan istifadə edərək yaratmaqdı qərarına gəldim. Lakin hər dəfə Kompyuteri açdıqdan sonra cmd-ni açıb əllə əmrlər yazmaq da bir az bezdirici idi. Axır ki məsələyə Pythonu da qatdım və məsələni kökündən həll elədim. Əvvəla bunu deyim ki, cmd ilə şəbəkəni paylamaq üçün aşağıdakı əmrlərdən istifadə edirdim:</p>
+<pre class="code literal-block"><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">set</span> <span class="n">hostednetwork</span> <span class="n">mode</span><span class="o">=</span><span class="n">allow</span> <span class="n">ssid</span><span class="o">=</span><span class="n">name</span> <span class="n">key</span><span class="o">=</span><span class="n">password</span> <span class="err">#</span> <span class="n">Parolu</span> <span class="n">v</span><span class="err">ə</span> <span class="err">şə</span><span class="n">b</span><span class="err">ə</span><span class="n">k</span><span class="err">ə</span><span class="n">nin</span> <span class="n">g</span><span class="err">ö</span><span class="n">r</span><span class="err">ü</span><span class="n">n</span><span class="err">ə</span><span class="n">n</span> <span class="n">ad</span><span class="err">ı</span><span class="n">n</span><span class="err">ı</span> <span class="n">t</span><span class="err">ə</span><span class="n">yin</span> <span class="n">etm</span><span class="err">ə</span><span class="n">k</span> <span class="err">üçü</span><span class="n">n</span><span class="p">.</span>
+
+<span class="n">netsh</span> <span class="n">wlan</span> <span class="n">start</span> <span class="n">hostednetwork</span> <span class="err">#şə</span><span class="n">b</span><span class="err">ə</span><span class="n">k</span><span class="err">ə</span><span class="n">ni</span> <span class="n">i</span><span class="err">şə</span> <span class="n">salmaq</span> <span class="err">üçü</span><span class="n">n</span><span class="p">.</span>
+</pre>
+
+
+<p>Hər dəfə bu əmrləri cmd-də yazmaq əvəzinə bu prosesi pythonla avtomatlaşdırdım. Dostum da istifadə edə bilsin deyə Tkinter vasitəsilə Gui də yığdım.
+Bir az kobud oldu amma əsas odur ki işləyir :)</p>
+<pre class="code literal-block"><span class="cp">#coding = utf-8</span>
+<span class="cp">#Wifi Hotspot Creator</span>
+<span class="n">from</span> <span class="n">tkinter</span> <span class="n">import</span> <span class="o">*</span>
+<span class="n">import</span> <span class="n">subprocess</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">window</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="err">'</span><span class="n">WIFI</span> <span class="n">Hotspot</span> <span class="n">Creator</span><span class="err">'</span><span class="p">)</span>
+<span class="n">window</span><span class="p">.</span><span class="n">resizable</span><span class="p">(</span><span class="n">False</span><span class="p">,</span> <span class="n">False</span><span class="p">)</span>
+
+<span class="n">ssid</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">"Wifi adı: "</span><span class="p">)</span>
+<span class="n">ssid</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s">"w"</span><span class="p">)</span>
+<span class="n">pasword</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">"Parol: "</span><span class="p">)</span>
+<span class="n">pasword</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s">"w"</span><span class="p">)</span>
+<span class="n">def</span> <span class="n">wifi</span><span class="p">()</span><span class="o">:</span>
+    <span class="n">ssid</span> <span class="o">=</span> <span class="n">entry</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">parol</span> <span class="o">=</span> <span class="n">entry1</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="err">'</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">set</span> <span class="n">hostednetwork</span> <span class="n">mode</span><span class="o">=</span><span class="n">allow</span> <span class="n">ssid</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="n">key</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="err">'</span> <span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">parol</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+    <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="err">'</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">start</span> <span class="n">hostednetwork</span><span class="err">'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+<span class="n">entry</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">()</span>
+<span class="n">entry</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">entry1</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="sc">'*'</span><span class="p">)</span>
+<span class="n">entry1</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">"Start"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">wifi</span><span class="p">)</span>
+<span class="n">button</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">def</span> <span class="n">stop</span><span class="p">()</span><span class="o">:</span>
+    <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="err">'</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">stop</span> <span class="n">hostednetwork</span><span class="err">'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+<span class="n">button1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="err">'</span><span class="n">Stop</span><span class="err">'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
+<span class="n">button1</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">pady</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">mainloop</span><span class="p">()</span>
+</pre>
+
+
+<p><a href="https://cloud.mail.ru/public/5bf036a3f713/Hotspot.zip">Programı yüklə</a></p>
+<p>İstifadə qaydası:</p>
+<p><img alt="Imgur" src="http://i.imgur.com/fP4HHlv.jpg?1"></p>
+<p>Demək mən burda neynədim: demək olar ki heçnə. Sadəcə pythonun <code>subprocess</code> modulundan istifadə edərək  cmd əmrlərini yerinə yetirdim.
+ Amma özünüzün əllə bir dəfə etməli olduğunuz bir şey var. Paylayacağınız connetionun Sharing parametrlərini tənzimləmək. Belə edə bilərsiniz:
+Daxil olursunuz: Control Panel &gt;&gt; Network and Internet &gt;&gt; Network Connections bölməsinə(rusca: Панель управления&gt;&gt;Сеть и Интернет&gt;&gt;Сетевые подключения).</p>
+<p><img alt="connections" src="http://www.maryfi.com/images/all-connections.gif"></p>
+<p>Şəkildə göründüyü kimi paylaşacağınız connectionu seçirsiniz:</p>
+<p><img alt="Propeties" src="http://www.maryfi.com/images/sharing-connection.gif">
+Sonra:</p>
+<p><img alt="Sharing" src="http://www.maryfi.com/images/properties-window.gif"></p>
+<p>Hansı connectionla paylaşacağınızı seçirsiniz:
+Böyük ehtimalla bu sizdə Wireless Network Connection 2 olacaq(Microsoft Virtual WiFi Miniport Adapter)(rusca:Беспроводное сетевое соединение 2).</p>
+<p>Settings bölməsinə daxil olursunuz.</p>
+<p><img alt="Go to Settings!" src="http://www.maryfi.com/images/choose-maryfi-connection.gif"></p>
+<p>Aşağıdakı şəkildə göstərilənlərə quş qoyursuz. Daha doğrusu şəkildə hansılarda quş varsa siz də onu quşduyun:D</p>
+<p><img alt="Quşduyun :D" src="http://www.maryfi.com/images/services-to-share.gif"></p>
+<p>Hər şeyə OK vurun. Və yüklədiyiniz zip faylını extract edin və bbc.exe faylını açın və istifadə edin.
+Bu arada, bütün adapterlər dəstəklənmir. Dəstəklənən adapterlərin siyahısı:</p>
+<ul>
+<li>Atheros AR5xxx/AR9xxx cards, driver version 8.0.0.238</li>
+<li>Broadcom 4310-series (in many Dell laptops)</li>
+<li>Broadcom 4321AG/4322AG/43224AG WLAN Adapter, driver version 5.60.18.8</li>
+<li>D-link AirPlus G DWL-G510 Wireless PCI Adapter, driver version 3.0.1.0</li>
+<li>D-Link DWA-140 Range Booster N USB Adapter, driver version 3.0.3.0</li>
+<li>Dell 1510 Wireless N adapter, Broadcom  version, driver 5.60.18.8,</li>
+<li>Intel 5100/5300, WiFi Link 1000 BGN, driver version 13.0.0.107</li>
+<li>Linksys Dual-Band Wireless-N USB Network Adapter(WUSB600N), driver version 3.0.10.0</li>
+<li>Netgear 108 Mbit WG311T</li>
+<li>Ralink RT2870 (in many 802.11n USB dongles)</li>
+<li>Realtek RTL8187B (Win7 driver ver.1178)</li>
+<li>Realtek RTL8187SE (with the drivers that came with Windows 7)</li>
+<li>Realtek RTL8192u with 1370(Beta)</li>
+<li>Sitecom Wireless USB Adapter 54g WL-608, with Ralink RT2870 drivers, version 3.0.9.0</li>
+</ul>
+<p>Bu da son. Uğurlar. </p>
+        </div>
+        
+        <ul class="pager">
+            <li class="previous">
+                <a href="tsadfirandom-alqoritmlr-v-pythonda-random-modulu.html" rel="prev" title="Pythonda random modulu">Previous post</a>
+            </li>
+        </ul>
+
+            
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="knulphaller",
+            disqus_url="http://knulphaller.github.io/posts/Pythondan istifadə edərək Command Line əmrləri vasitəsilə Hotspot necə yaratmaq olar..html",
+        disqus_title="Python, cmd v\u0259 Hotspot. Pythonla Wifi Hotspot yaradaq.",
+        disqus_identifier="cache/posts/hotspotandpython.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        
+
+    </div>
+
+        
+       <script>var disqus_shortname="knulphaller";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+             
+        <footer id="footer" role="contentinfo">
+            <p>Contents © 2014         <a href="mailto:http://scr.im/writehim">Knulp</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+
+        </div>
+    </section>
+    
+    
+    
+            <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul>
+<li>
+<a class="addthis_button_facebook"></a>
+</li>
+<li>
+<a class="addthis_button_google_plusone_share"></a>
+</li>
+<li>
+<a class="addthis_button_linkedin"></a>
+</li>
+<li>
+<a class="addthis_button_twitter"></a>
+</li>
+</ul>
+</div>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+
+
+    
+        <script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+    
+</body>
+</html>
