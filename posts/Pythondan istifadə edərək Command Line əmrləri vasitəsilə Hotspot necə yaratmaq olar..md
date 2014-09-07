@@ -69,6 +69,7 @@ Daxil olursunuz: Control Panel >> Network and Internet >> Network Connections b�
 Şəkildə göründüyü kimi paylaşacağınız connectionu seçirsiniz:
 
 ![Propeties](http://www.maryfi.com/images/sharing-connection.gif)
+
 Sonra:
 
 ![Sharing](http://www.maryfi.com/images/properties-window.gif)
