@@ -25,11 +25,13 @@
 
     <meta name="author" content="Knulp">
     
-        <meta name="og:title" content="Python, cmd və Hotspot. Pythonla Wifi Hotspot yaradaq.">
-        <meta name="og:url" content="http://knulphaller.github.io/posts/Pythondan istifadə edərək Command Line əmrləri vasitəsilə Hotspot necə yaratmaq olar..html">
-            <meta name="og:description" content="Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. ">
-        <meta name="og:site_name" content="Just another simple blog">
-        <meta name="og:type" content="article">
+    <meta property="og:site_name" content="Just another simple blog">
+    <meta property="og:title" content="Python, cmd və Hotspot. Pythonla Wifi Hotspot yaradaq.">
+    <meta property="og:url" content="http://knulphaller.github.io/posts/Pythondan istifadə edərək Command Line əmrləri vasitəsilə Hotspot necə yaratmaq olar..html">
+    <meta property="og:description" content="Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. ">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2014-09-06T01:36:29+05:00">
+           <meta property="article:tag" content="Python">
 
     
 
@@ -69,53 +71,54 @@
             
         <div itemprop="keywords" class="tags">
         <ul>
-        Teqlər : 
+        Tags : 
            <li><a class="tag p-category" href="../categories/python.html" rel="tag">Python</a></li>
         </ul>
         </div>
 
         </div>
         <div class="body">
-            <p>Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. Amma mobil modemlərdən istifadə edənlər(elə biri də mən) gec tez belə bir metoda baş vururlar. Gəlin bir də bunu pythonla edək.</p>
+            <div>
+<p>Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. Amma mobil modemlərdən istifadə edənlər(elə biri də mən) gec tez belə bir metoda baş vururlar. Gəlin bir də bunu pythonla edək.</p>
 <!-- TEASER_END: Davamını oxu -->
 
 <p>Kompyuterdə olan internetin digər cihazlara kompyuterin wifi adapteri ilə paylanmasına el arasında HotSpot deyirlər. Əgər siz wifi modemdən istifadə edirsinizsə təbiiki artıq buna ehtiyacınız qalmır. Amma mobil modemlərdən istifadə edənlər(elə biri də mən) gec tez belə bir metoda baş vururlar. Mən də adətən bu metodlardan istifadə edirəm. Belə şəbəkəni paylamaq üçün bir çox programlar mövcuddur. Bu programlara misal olaraq Wifi Hotspot, Connectify, Maryfi kimi programları göstərə bilərik. Elə yaxın zamana qədər mən də bu programlardan istifadə edirdim. Lakin dəyişməyən şey bu programlarda çıxan problemlər olurdu. Adətən məndə bu programlar tez-tez donur, çox yaddaş yeyir ip confiqurasiyalara barmaq edir və s bir çox belə kiçik məsələlər ilə başımı ağrıdırdılar. Bir dostumun da mənə bu məsələdə şikayət etməsi məni vadar elədi ki bu məsələyə bir az ciddi yanaşım. Deməli belə, bu məsələdə demək olar ki mən bütün yollara baş vurdum. Ən effektiv həll yolu isə şəbəkəni elə Command Line-dan istifadə edərək yaratmaqdı qərarına gəldim. Lakin hər dəfə Kompyuteri açdıqdan sonra cmd-ni açıb əllə əmrlər yazmaq da bir az bezdirici idi. Axır ki məsələyə Pythonu da qatdım və məsələni kökündən həll elədim. Əvvəla bunu deyim ki, cmd ilə şəbəkəni paylamaq üçün aşağıdakı əmrlərdən istifadə edirdim:</p>
-<pre class="code literal-block"><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">set</span> <span class="n">hostednetwork</span> <span class="n">mode</span><span class="o">=</span><span class="n">allow</span> <span class="n">ssid</span><span class="o">=</span><span class="n">name</span> <span class="n">key</span><span class="o">=</span><span class="n">password</span> <span class="err">#</span> <span class="n">Parolu</span> <span class="n">v</span><span class="err">ə</span> <span class="err">şə</span><span class="n">b</span><span class="err">ə</span><span class="n">k</span><span class="err">ə</span><span class="n">nin</span> <span class="n">g</span><span class="err">ö</span><span class="n">r</span><span class="err">ü</span><span class="n">n</span><span class="err">ə</span><span class="n">n</span> <span class="n">ad</span><span class="err">ı</span><span class="n">n</span><span class="err">ı</span> <span class="n">t</span><span class="err">ə</span><span class="n">yin</span> <span class="n">etm</span><span class="err">ə</span><span class="n">k</span> <span class="err">üçü</span><span class="n">n</span><span class="p">.</span>
+<pre class="code literal-block">netsh wlan set hostednetwork mode=allow ssid=name key=password # Parolu və şəbəkənin görünən adını təyin etmək üçün.
 
-<span class="n">netsh</span> <span class="n">wlan</span> <span class="n">start</span> <span class="n">hostednetwork</span> <span class="err">#şə</span><span class="n">b</span><span class="err">ə</span><span class="n">k</span><span class="err">ə</span><span class="n">ni</span> <span class="n">i</span><span class="err">şə</span> <span class="n">salmaq</span> <span class="err">üçü</span><span class="n">n</span><span class="p">.</span>
+netsh wlan start hostednetwork #şəbəkəni işə salmaq üçün.
 </pre>
 
 
 <p>Hər dəfə bu əmrləri cmd-də yazmaq əvəzinə bu prosesi pythonla avtomatlaşdırdım. Dostum da istifadə edə bilsin deyə Tkinter vasitəsilə Gui də yığdım.
 Bir az kobud oldu amma əsas odur ki işləyir :)</p>
-<pre class="code literal-block"><span class="cp">#coding = utf-8</span>
-<span class="cp">#Wifi Hotspot Creator</span>
-<span class="n">from</span> <span class="n">tkinter</span> <span class="n">import</span> <span class="o">*</span>
-<span class="n">import</span> <span class="n">subprocess</span>
+<pre class="code literal-block"><span class="c">#coding = utf-8</span>
+<span class="c">#Wifi Hotspot Creator</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
 
 <span class="n">window</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
-<span class="n">window</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="err">'</span><span class="n">WIFI</span> <span class="n">Hotspot</span> <span class="n">Creator</span><span class="err">'</span><span class="p">)</span>
-<span class="n">window</span><span class="p">.</span><span class="n">resizable</span><span class="p">(</span><span class="n">False</span><span class="p">,</span> <span class="n">False</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'WIFI Hotspot Creator'</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
 
 <span class="n">ssid</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">"Wifi adı: "</span><span class="p">)</span>
-<span class="n">ssid</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s">"w"</span><span class="p">)</span>
+<span class="n">ssid</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s">"w"</span><span class="p">)</span>
 <span class="n">pasword</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">"Parol: "</span><span class="p">)</span>
-<span class="n">pasword</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s">"w"</span><span class="p">)</span>
-<span class="n">def</span> <span class="n">wifi</span><span class="p">()</span><span class="o">:</span>
-    <span class="n">ssid</span> <span class="o">=</span> <span class="n">entry</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-    <span class="n">parol</span> <span class="o">=</span> <span class="n">entry1</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-    <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="err">'</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">set</span> <span class="n">hostednetwork</span> <span class="n">mode</span><span class="o">=</span><span class="n">allow</span> <span class="n">ssid</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="n">key</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="err">'</span> <span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">parol</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
-    <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="err">'</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">start</span> <span class="n">hostednetwork</span><span class="err">'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+<span class="n">pasword</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s">"w"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">wifi</span><span class="p">():</span>
+    <span class="n">ssid</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">parol</span> <span class="o">=</span> <span class="n">entry1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s">'netsh wlan set hostednetwork mode=allow ssid={0} key={1}'</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">parol</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s">'netsh wlan start hostednetwork'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">entry</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">()</span>
-<span class="n">entry</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">entry1</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="sc">'*'</span><span class="p">)</span>
-<span class="n">entry1</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">entry</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">entry1</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="s">'*'</span><span class="p">)</span>
+<span class="n">entry1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">button</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">"Start"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">wifi</span><span class="p">)</span>
-<span class="n">button</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">def</span> <span class="n">stop</span><span class="p">()</span><span class="o">:</span>
-    <span class="n">subprocess</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="err">'</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">stop</span> <span class="n">hostednetwork</span><span class="err">'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
-<span class="n">button1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="err">'</span><span class="n">Stop</span><span class="err">'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
-<span class="n">button1</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">pady</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">stop</span><span class="p">():</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s">'netsh wlan stop hostednetwork'</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">button1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">'Stop'</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
+<span class="n">button1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">pady</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">mainloop</span><span class="p">()</span>
 </pre>
@@ -157,11 +160,12 @@ Bu arada, bütün adapterlər dəstəklənmir. Dəstəklənən adapterlərin siy
 <li>Sitecom Wireless USB Adapter 54g WL-608, with Ralink RT2870 drivers, version 3.0.9.0</li>
 </ul>
 <p>Bu da son. Uğurlar. </p>
+</div>
         </div>
         
         <ul class="pager">
             <li class="previous">
-                <a href="tsadfirandom-alqoritmlr-v-pythonda-random-modulu.html" rel="prev" title="Pythonda random modulu">Əvvəlki yazı</a>
+                <a href="tsadfirandom-alqoritmlr-v-pythonda-random-modulu.html" rel="prev" title="Pythonda random modulu">Previous post</a>
             </li>
         </ul>
 

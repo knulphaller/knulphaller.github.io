@@ -6,23 +6,35 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://knulphaller.github.io/2014/index.html</loc>
+  <lastmod>2014-11-19</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/about/about.html</loc>
   <lastmod>2014-08-30</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/archive.html</loc>
-  <lastmod>2014-08-30</lastmod>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/categories/index.html</loc>
-  <lastmod>2014-08-30</lastmod>
+  <lastmod>2014-11-19</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/categories/modullar.html</loc>
+  <lastmod>2014-11-19</lastmod>
+ </url>
+ <url>
+  <loc>http://knulphaller.github.io/categories/python.html</loc>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/galleries/index.html</loc>
-  <lastmod>2014-08-30</lastmod>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/index.html</loc>
-  <lastmod>2014-08-30</lastmod>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/listings/firstpro.py.html</loc>
@@ -30,23 +42,19 @@
  </url>
  <url>
   <loc>http://knulphaller.github.io/listings/index.html</loc>
-  <lastmod>2014-08-30</lastmod>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
-  <loc>http://knulphaller.github.io/posts/damn.html</loc>
-  <lastmod>2014-08-29</lastmod>
+  <loc>http://knulphaller.github.io/posts/Pythondan istifadə edərək Command Line əmrləri vasitəsilə Hotspot necə yaratmaq olar..html</loc>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
-  <loc>http://knulphaller.github.io/posts/testing-coding-with-markdown.html</loc>
-  <lastmod>2014-08-30</lastmod>
+  <loc>http://knulphaller.github.io/posts/tsadfirandom-alqoritmlr-v-pythonda-random-modulu.html</loc>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
-  <loc>http://knulphaller.github.io/posts/testing-coding-with-markdown/index.html</loc>
-  <lastmod>2014-08-30</lastmod>
- </url>
- <url>
-  <loc>http://knulphaller.github.io/stories/cv.html</loc>
-  <lastmod>2014-08-29</lastmod>
+  <loc>http://knulphaller.github.io/stories/about.html</loc>
+  <lastmod>2014-11-19</lastmod>
  </url>
  <url>
   <loc>http://knulphaller.github.io/tipue_search.html</loc>
